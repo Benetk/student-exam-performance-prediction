@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student Performance | EduPredict</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#172338;--muted:#65748b;--line:#e4eaf2;--blue:#4263eb;--pale:#edf1ff;--green:#16865b;--red:#bd3e35}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,Arial,sans-serif;color:var(--ink)}.layout{display:grid;grid-template-columns:225px 1fr;min-height:100vh}.side{background:#111b2e;color:#fff;padding:24px 16px}.brand{display:flex;gap:10px;align-items:center;font-weight:800;font-size:18px;margin-bottom:34px}.logo{background:#4263eb;border-radius:11px;padding:10px}.nav{display:block;padding:12px;color:#c9d3e2;text-decoration:none;border-radius:9px;font-size:13px;margin:5px 0}.nav:hover,.nav.active{background:#263653;color:white}.side-note{margin-top:30px;background:#1c2a42;padding:12px;border-radius:10px;color:#bdc9da;font-size:12px;line-height:1.6}main{padding:28px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.eyebrow{font-size:11px;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase}.top h1{margin:6px 0 0;font-size:26px}.status{font-size:12px;border-radius:30px;padding:9px 12px;background:#e5f7ef;color:#16724e}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:18px}.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0;box-shadow:0 6px 20px #17233808}.metric-label{color:var(--muted);font-size:12px}.metric{font-size:24px;font-weight:800;margin:12px 0 5px;overflow-wrap:anywhere}.hint{font-size:11px;color:var(--muted)}.columns{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:16px;align-items:start}.panel{margin-bottom:16px}.panel h2{font-size:16px;margin:0 0 6px}.sub{color:var(--muted);font-size:12px;line-height:1.5;margin:0 0 17px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field.full{grid-column:1/-1}label{font-size:12px;font-weight:700;display:block;margin-bottom:6px;color:#4d5a70}input,select{width:100%;border:1px solid #d8e0ec;border-radius:8px;padding:10px;background:white;font-size:13px;color:var(--ink)}button{border:0;border-radius:8px;padding:12px 15px;background:var(--blue);color:white;font-weight:700;cursor:pointer}button:disabled{opacity:.6}.btns{display:flex;gap:9px;margin-top:17px;flex-wrap:wrap}.secondary{background:#edf1f7;color:#28354c}.result{display:none;background:#f0f4ff;border:1px solid #dce4ff;border-radius:11px;padding:16px;margin-top:15px}.result-number{font-size:34px;font-weight:800;color:#3154d8}.msg{font-size:12px;margin-top:10px;line-height:1.5}.err{color:var(--red)}.ok{color:var(--green)}.note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:13px}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:10px 7px;white-space:nowrap}th{color:var(--muted)}.pill{background:var(--pale);color:#3d56bf;padding:4px 7px;border-radius:20px;font-size:10px}.bar{display:grid;grid-template-columns:115px 1fr 35px;gap:8px;align-items:center;font-size:11px;margin:15px 0}.track{height:8px;background:#edf0f6;border-radius:20px;overflow:hidden}.fill{height:100%;background:#5877f1}.history-row{padding:10px 0;border-bottom:1px solid var(--line);font-size:12px;display:flex;justify-content:space-between;gap:10px}.history-row:last-child{border-bottom:0}.empty{font-size:12px;color:var(--muted);padding:8px 0}.foot{text-align:center;color:var(--muted);font-size:11px;padding:12px}
+@media(max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.columns{grid-template-columns:1fr}}
+@media(max-width:620px){.layout{grid-template-columns:1fr}.side{padding:13px;display:flex;justify-content:space-between;align-items:center;gap:8px}.brand{margin:0;font-size:16px}.navs{display:flex;gap:3px}.nav{padding:9px;font-size:11px}.side-note{display:none}main{padding:15px}.top{align-items:flex-start;flex-direction:column}.top h1{font-size:22px}.panel,.card{padding:14px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+</style></head>
+<body><div class="layout">
+<aside class="side"><div class="brand"><span class="logo">🎓</span>EduPredict</div><div class="navs"><a class="nav active" href="#overview">▦ Overview</a><a class="nav" href="#predict">✦ Predict</a><a class="nav" href="#models">◫ Model results</a></div><div class="side-note">Student Exam Performance Prediction<br><br>Predict final Mathematics grade on a 0–20 scale using school and study-related information. For demonstration only.</div></aside>
+<main><header class="top" id="overview"><div><div class="eyebrow">Machine learning dashboard</div><h1>Student performance overview</h1></div><div class="status" id="api-status">Checking API…</div></header>
+<section class="cards">
+<div class="card"><div class="metric-label">Dataset records</div><div class="metric" id="records">—</div><div class="hint">After cleaning</div></div>
+<div class="card"><div class="metric-label">Selected model</div><div class="metric" id="model" style="font-size:17px">—</div><div class="hint">Lowest validation MAE</div></div>
+<div class="card"><div class="metric-label">Test MAE</div><div class="metric" id="mae">—</div><div class="hint">Average error in grade points</div></div>
+<div class="card"><div class="metric-label">Test R²</div><div class="metric" id="r2">—</div><div class="hint">Held-out test result</div></div>
+</section>
+<section class="columns"><div>
+<div class="panel" id="predict"><h2>1. Predict final Mathematics grade</h2><p class="sub">Complete the fields below. Numeric ranges and options are loaded from the trained model metadata.</p>
+<form id="form"><div id="fields" class="form-grid"><div class="empty">Loading input fields…</div></div><div class="btns"><button id="submit" type="submit">Predict final grade →</button><button class="secondary" id="reset" type="button">Reset example</button></div><div id="message" class="msg" role="status"></div><div id="result" class="result"><div class="eyebrow">Predicted final grade</div><div class="result-number"><span id="score">—</span><span style="font-size:15px"> / 20</span></div><div class="hint">Estimated grade returned by the model.</div></div><p class="note">This is an estimate from historical data, not a guaranteed result. The dataset is from two Portuguese schools and may not generalize to other contexts.</p></form></div>
+<div class="panel" id="models"><h2>2. Compare regression models</h2><p class="sub">Metrics below come from the validation split. Lower MAE/RMSE is better; higher R² is generally better.</p><div class="tablewrap"><table><thead><tr><th>Model</th><th>MAE ↓</th><th>RMSE ↓</th><th>R² ↑</th></tr></thead><tbody id="model-table"><tr><td colspan="4">Loading…</td></tr></tbody></table></div></div>
+</div><div>
+<div class="panel"><h2>Validation MAE comparison</h2><p class="sub">Shorter bars indicate lower validation error.</p><div id="chart" class="empty">Loading model metrics…</div></div>
+<div class="panel"><h2>Recent predictions</h2><p class="sub">Stored in this browser session only.</p><div id="history" class="empty">No predictions yet.</div></div>
+<div class="panel"><h2>Service status</h2><div class="history-row"><span>Health endpoint</span><span class="pill" id="health">Checking</span></div><div class="history-row"><span>Model readiness</span><span class="pill" id="ready">Checking</span></div><button class="secondary" id="refresh" style="margin-top:13px">Refresh status</button></div>
+</div></section><div class="foot">EduPredict · Student Exam Performance Prediction · Educational demonstration</div></main></div>
+<script>
+let meta=null, historyItems=[];
+const $=id=>document.getElementById(id);
+const pretty=s=>String(s).replaceAll('_',' ').replace(/\b\w/g,c=>c.toUpperCase());
+function renderFields(schema){
+ const wrap=$('fields'); wrap.innerHTML='';
+ schema.forEach((f,i)=>{
+   const box=document.createElement('div'); box.className='field'+(i===schema.length-1?' full':'');
+   const label=document.createElement('label'); label.htmlFor='f-'+f.name; label.textContent=pretty(f.name); box.appendChild(label);
+   let input;
+   if(f.type==='select'){
+     input=document.createElement('select');
+     (f.choices||[]).forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;input.appendChild(o)});
+   } else {
+     input=document.createElement('input');input.type='number';input.min=f.min;input.max=f.max;input.step=f.step||'any';
+     const suggested = ({age:16,Medu:2,Fedu:2,traveltime:1,studytime:2,failures:0,famrel:4,freetime:3,goout:2,Dalc:1,Walc:2,health:4,absences:4})[f.name];
+     input.value=suggested!==undefined?Math.max(f.min,Math.min(f.max,suggested)):f.min;
+   }
+   input.id='f-'+f.name;input.name=f.name;input.required=true;box.appendChild(input);
+   if(f.type==='number'){const hint=document.createElement('div');hint.className='hint';hint.textContent=`Allowed range: ${f.min}–${f.max}`;hint.style.marginTop='5px';box.appendChild(hint)}
+   wrap.appendChild(box);
+ });
+}
+function renderModels(results,best){
+ const entries=Object.entries(results||{});
+ $('model-table').innerHTML=entries.length?entries.map(([n,m])=>`<tr><td>${pretty(n)} ${n===best?'<span class="pill">Selected</span>':''}</td><td>${m.MAE}</td><td>${m.RMSE}</td><td>${m.R2}</td></tr>`).join(''):'<tr><td colspan="4">No validation metrics available.</td></tr>';
+ if(!entries.length){$('chart').textContent='No validation metrics available.';return}
+ const max=Math.max(...entries.map(([n,m])=>Number(m.MAE)||0),.01);
+ $('chart').innerHTML=entries.map(([n,m])=>`<div class="bar"><span>${pretty(n)}</span><div class="track"><div class="fill" style="width:${Math.max(2,Number(m.MAE)/max*100)}%"></div></div><strong>${m.MAE}</strong></div>`).join('');
+}
+async function refresh(){
+ try{const h=await fetch('/health');const hd=await h.json();const ok=h.ok&&hd.status==='ok';$('api-status').textContent=ok?'API online':'API issue';$('health').textContent=ok?'Online':'Unavailable'}catch(e){$('api-status').textContent='API offline';$('health').textContent='Unavailable'}
+ try{const r=await fetch('/ready');const d=await r.json();$('ready').textContent=d.ready?'Ready':'Not ready'}catch(e){$('ready').textContent='Unavailable'}
+ try{
+  const r=await fetch('/model-info');const d=await r.json();if(!r.ok)throw new Error(d.error||'Metadata unavailable');
+  meta=d;$('records').textContent=d.dataset_rows_after_cleaning;$('model').textContent=pretty(d.model_name);$('mae').textContent=d.test_results.MAE;$('r2').textContent=d.test_results.R2;
+  renderFields(d.input_schema);renderModels(d.validation_results,d.model_name);
+ }catch(e){$('fields').innerHTML='<div class="empty">Model metadata unavailable. Put the dataset in data/student-mat.csv and run <code>python train_model.py</code>.</div>';$('model-table').innerHTML='<tr><td colspan="4">No model metadata loaded.</td></tr>';$('chart').textContent='No metrics available.'}
+}
+$('form').addEventListener('submit',async e=>{
+ e.preventDefault();if(!meta)return;
+ const payload={};for(const f of meta.input_schema){const el=$('f-'+f.name);payload[f.name]=f.type==='number'?Number(el.value):el.value}
+ $('submit').disabled=true;$('submit').textContent='Predicting…';$('result').style.display='none';$('message').className='msg';$('message').textContent='';
+ try{const r=await fetch('/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const d=await r.json();if(!r.ok)throw new Error(d.error||'Prediction failed');
+ $('score').textContent=d.predicted_grade;$('result').style.display='block';$('message').className='msg ok';$('message').textContent='Prediction received successfully from the API.';
+ historyItems.unshift({score:d.predicted_grade,time:new Date().toLocaleTimeString()});historyItems=historyItems.slice(0,5);$('history').innerHTML=historyItems.map(x=>`<div class="history-row"><strong>${x.score} / 20</strong><span class="hint">${x.time}</span></div>`).join('');
+ }catch(err){$('message').className='msg err';$('message').textContent=err.message+' Check that the API is running and model artifacts exist.'}
+ finally{$('submit').disabled=false;$('submit').textContent='Predict final grade →'}
+});
+$('reset').addEventListener('click',()=>{if(meta)renderFields(meta.input_schema);$('result').style.display='none';$('message').textContent=''});
+$('refresh').addEventListener('click',refresh);refresh();
+</script></body></html>

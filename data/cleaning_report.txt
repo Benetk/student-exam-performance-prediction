@@ -1,0 +1,13 @@
+UCI Student Performance Dataset - Cleaning Report
+
+Source: UCI Machine Learning Repository
+Dataset: Mathematics student performance
+Original rows: 395
+Duplicate rows removed: 0
+Rows with missing required values removed: 0
+Clean rows saved: 395
+Input features: 30
+Target column: G3
+Excluded leakage columns: G1, G2
+Target range: 0 to 20
+Output file: data/student-mat.csv

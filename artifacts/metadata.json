@@ -1,0 +1,346 @@
+{
+  "project": "Student Exam Performance Prediction",
+  "dataset": "UCI Student Performance - Mathematics (student-mat.csv)",
+  "dataset_source": "https://archive.ics.uci.edu/dataset/320/student-performance",
+  "target": "G3",
+  "target_description": "Final mathematics grade, scale 0 to 20",
+  "features": [
+    "age",
+    "Medu",
+    "Fedu",
+    "traveltime",
+    "studytime",
+    "failures",
+    "famrel",
+    "freetime",
+    "goout",
+    "Dalc",
+    "Walc",
+    "health",
+    "absences",
+    "school",
+    "sex",
+    "address",
+    "famsize",
+    "Pstatus",
+    "Mjob",
+    "Fjob",
+    "reason",
+    "guardian",
+    "schoolsup",
+    "famsup",
+    "paid",
+    "activities",
+    "nursery",
+    "higher",
+    "internet",
+    "romantic"
+  ],
+  "numeric_features": [
+    "age",
+    "Medu",
+    "Fedu",
+    "traveltime",
+    "studytime",
+    "failures",
+    "famrel",
+    "freetime",
+    "goout",
+    "Dalc",
+    "Walc",
+    "health",
+    "absences"
+  ],
+  "categorical_features": [
+    "school",
+    "sex",
+    "address",
+    "famsize",
+    "Pstatus",
+    "Mjob",
+    "Fjob",
+    "reason",
+    "guardian",
+    "schoolsup",
+    "famsup",
+    "paid",
+    "activities",
+    "nursery",
+    "higher",
+    "internet",
+    "romantic"
+  ],
+  "input_schema": [
+    {
+      "name": "age",
+      "type": "number",
+      "min": 15.0,
+      "max": 22.0,
+      "step": 1
+    },
+    {
+      "name": "Medu",
+      "type": "number",
+      "min": 0,
+      "max": 4,
+      "step": 1
+    },
+    {
+      "name": "Fedu",
+      "type": "number",
+      "min": 0,
+      "max": 4,
+      "step": 1
+    },
+    {
+      "name": "traveltime",
+      "type": "number",
+      "min": 1,
+      "max": 4,
+      "step": 1
+    },
+    {
+      "name": "studytime",
+      "type": "number",
+      "min": 1,
+      "max": 4,
+      "step": 1
+    },
+    {
+      "name": "failures",
+      "type": "number",
+      "min": 0,
+      "max": 3,
+      "step": 1
+    },
+    {
+      "name": "famrel",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "step": 1
+    },
+    {
+      "name": "freetime",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "step": 1
+    },
+    {
+      "name": "goout",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "step": 1
+    },
+    {
+      "name": "Dalc",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "step": 1
+    },
+    {
+      "name": "Walc",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "step": 1
+    },
+    {
+      "name": "health",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "step": 1
+    },
+    {
+      "name": "absences",
+      "type": "number",
+      "min": 0.0,
+      "max": 75.0,
+      "step": 1
+    },
+    {
+      "name": "school",
+      "type": "select",
+      "choices": [
+        "GP",
+        "MS"
+      ]
+    },
+    {
+      "name": "sex",
+      "type": "select",
+      "choices": [
+        "F",
+        "M"
+      ]
+    },
+    {
+      "name": "address",
+      "type": "select",
+      "choices": [
+        "R",
+        "U"
+      ]
+    },
+    {
+      "name": "famsize",
+      "type": "select",
+      "choices": [
+        "GT3",
+        "LE3"
+      ]
+    },
+    {
+      "name": "Pstatus",
+      "type": "select",
+      "choices": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "name": "Mjob",
+      "type": "select",
+      "choices": [
+        "at_home",
+        "health",
+        "other",
+        "services",
+        "teacher"
+      ]
+    },
+    {
+      "name": "Fjob",
+      "type": "select",
+      "choices": [
+        "at_home",
+        "health",
+        "other",
+        "services",
+        "teacher"
+      ]
+    },
+    {
+      "name": "reason",
+      "type": "select",
+      "choices": [
+        "course",
+        "home",
+        "other",
+        "reputation"
+      ]
+    },
+    {
+      "name": "guardian",
+      "type": "select",
+      "choices": [
+        "father",
+        "mother",
+        "other"
+      ]
+    },
+    {
+      "name": "schoolsup",
+      "type": "select",
+      "choices": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "name": "famsup",
+      "type": "select",
+      "choices": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "name": "paid",
+      "type": "select",
+      "choices": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "name": "activities",
+      "type": "select",
+      "choices": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "name": "nursery",
+      "type": "select",
+      "choices": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "name": "higher",
+      "type": "select",
+      "choices": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "name": "internet",
+      "type": "select",
+      "choices": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "name": "romantic",
+      "type": "select",
+      "choices": [
+        "no",
+        "yes"
+      ]
+    }
+  ],
+  "model_name": "random_forest",
+  "validation_results": {
+    "baseline_mean": {
+      "MAE": 2.929,
+      "RMSE": 4.231,
+      "R2": -0.016
+    },
+    "linear_regression": {
+      "MAE": 3.155,
+      "RMSE": 4.297,
+      "R2": -0.048
+    },
+    "ridge_regression": {
+      "MAE": 3.13,
+      "RMSE": 4.259,
+      "R2": -0.03
+    },
+    "random_forest": {
+      "MAE": 2.642,
+      "RMSE": 3.457,
+      "R2": 0.321
+    }
+  },
+  "test_results": {
+    "MAE": 3.031,
+    "RMSE": 3.796,
+    "R2": 0.297
+  },
+  "dataset_rows_after_cleaning": 395,
+  "train_rows": 237,
+  "validation_rows": 79,
+  "test_rows": 79,
+  "split": "60% train / 20% validation / 20% test",
+  "random_state": 42,
+  "leakage_note": "G1 and G2 were excluded because this project models an early prediction scenario."
+}

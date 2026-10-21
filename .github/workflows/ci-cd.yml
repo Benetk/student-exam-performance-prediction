@@ -1,0 +1,41 @@
+name: Student Performance CI and Practice Release
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test-build-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Download and clean dataset
+        run: python prepare_dataset.py
+      - name: Train and evaluate models
+        run: python train_model.py
+      - name: Run tests
+        run: python -m unittest -v
+      - name: Build Docker image
+        run: docker build -t student-performance-api:ci .
+      - name: Container smoke tests
+        run: |
+          docker run -d --name student-performance -p 5000:5000 student-performance-api:ci
+          for i in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:5000/health; then break; fi
+            sleep 2
+          done
+          curl -fsS http://127.0.0.1:5000/ready
+          curl -fsS http://127.0.0.1:5000/model-info
+          docker rm -f student-performance
+      - name: Practice release verification
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: echo "Practice release verified. Configure a hosting provider for real public deployment."

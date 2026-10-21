@@ -1,0 +1,28 @@
+START HERE — run commands from a terminal
+
+1. Extract this ZIP.
+2. Open a terminal in the extracted student_exam_performance_project folder.
+3. Install dependencies, download/clean data, train the model, run tests, start Docker:
+
+Windows PowerShell:
+  python -m venv .venv
+  .venv\Scripts\Activate.ps1
+  pip install -r requirements.txt
+  python prepare_dataset.py
+  python train_model.py
+  python -m unittest -v
+  docker compose up --build
+
+macOS/Linux:
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install -r requirements.txt
+  python prepare_dataset.py
+  python train_model.py
+  python -m unittest -v
+  docker compose up --build
+
+Open http://localhost:5000 after Docker starts.
+To stop: Ctrl+C, then run `docker compose down` in another terminal if needed.
+
+Internet is required for the first dataset download. Docker must be installed and running.
