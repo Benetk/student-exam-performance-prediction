@@ -2,7 +2,7 @@ import json
 import os
 import joblib
 import pandas as pd
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 MODEL_PATH = os.environ.get("MODEL_PATH", "artifacts/model.joblib")
@@ -24,7 +24,7 @@ def load_artifacts():
 
 @app.get("/")
 def home():
-    return send_from_directory(".", "index.html")
+    return render_template("index.html")
 
 @app.get("/health")
 def health():
